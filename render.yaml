@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: vsemirny-disk
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - {key: GITHUB_TOKEN, sync: false}
+      - {key: GITHUB_OWNER, sync: false}
+      - {key: GITHUB_REPO, sync: false}
+      - {key: GITHUB_BRANCH, value: main}
