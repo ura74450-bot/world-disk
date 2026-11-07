@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,interactive-widget=resizes-content">
+<title>Всемирный диск</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+<style>
+:root{--bg:#0b1020;--card:#151b33;--line:#262e52;--tx:#e8ecff;--mut:#8a94c2;--a:#6c8cff;--b:#b46cff}
+*{box-sizing:border-box;margin:0}html,body{height:100%}body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);display:flex;flex-direction:column;overflow:hidden}
+.blob{position:fixed;width:460px;height:460px;border-radius:50%;filter:blur(100px);opacity:.3;z-index:-1;animation:fl 14s ease-in-out infinite alternate}
+.b1{background:var(--a);top:-120px;left:-100px}.b2{background:var(--b);bottom:-140px;right:-100px;animation-delay:-7s}
+@keyframes fl{to{transform:translate(140px,90px) scale(1.25)}}@keyframes fi{from{opacity:0}}@keyframes up{from{opacity:0;transform:translateY(22px)}}
+header{display:flex;align-items:center;gap:10px;padding:12px 16px;animation:dn .6s both;flex-wrap:wrap}@keyframes dn{from{opacity:0;transform:translateY(-20px)}}
+h1{font-size:20px;display:flex;gap:8px;align-items:center;margin-right:auto}.globe{display:inline-block;animation:sp 12s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.on{font-size:13px;color:var(--mut);display:flex;gap:6px;align-items:center}.dot{width:9px;height:9px;border-radius:50%;background:#3ddc84;animation:pu 1.6s infinite}
+@keyframes pu{0%{box-shadow:0 0 0 0 #3ddc8488}100%{box-shadow:0 0 0 10px #0000}}
+button,input{font:inherit;color:var(--tx)}
+button{border:0;border-radius:12px;padding:10px 16px;cursor:pointer;background:linear-gradient(135deg,var(--a),var(--b));transition:.2s;position:relative}button:hover{transform:translateY(-2px);filter:brightness(1.15)}
+button.g{background:var(--card);border:1px solid var(--line)}
+.badge{position:absolute;top:-6px;right:-6px;background:#ff4d6d;border-radius:10px;font-size:11px;padding:1px 6px;display:none;animation:po .4s}@keyframes po{from{transform:scale(0)}}
+input,textarea{background:#0e1428;border:1px solid var(--line);border-radius:12px;padding:11px 14px;width:100%;outline:0}input:focus,textarea:focus{border-color:var(--a)}
+#zone{flex:1;margin:0 16px 16px;border-radius:26px;border:3px dashed var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:.3s;position:relative;animation:up .7s both;background:#ffffff05}
+#zone:hover,.drag #zone{border-color:var(--a);background:#6c8cff14;box-shadow:0 0 70px #6c8cff40 inset}.drag #zone{transform:scale(.985);border-style:solid}
+#zone .ic{font-size:clamp(70px,16vw,140px);animation:bo 2.4s ease-in-out infinite}@keyframes bo{50%{transform:translateY(-14px)}}
+.drag #zone .ic{animation:bo .6s infinite}#zone h2{font-size:clamp(20px,4vw,34px);margin-top:10px}#zone p{color:var(--mut);margin-top:8px}
+#ups{position:absolute;left:14px;right:14px;bottom:14px;display:flex;flex-direction:column;gap:8px;max-height:45%;overflow:auto;cursor:default}
+.up{background:#0e1428ee;border:1px solid var(--line);border-radius:12px;padding:9px 13px;font-size:13px;text-align:left;animation:up .3s both}
+.bar{height:6px;border-radius:3px;background:var(--line);margin-top:6px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width .2s}
+.win{position:fixed;inset:0;background:#050810d9;display:none;align-items:center;justify-content:center;z-index:20;backdrop-filter:blur(8px);padding:14px}.win.s{display:flex;animation:fi .25s}
+.box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;width:min(640px,100%);max-height:88vh;display:flex;flex-direction:column;animation:up .35s both}
+.box h3{margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}.x{padding:6px 11px}
+#list{overflow:auto;margin-top:10px}
+.f{display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;animation:up .45s both;transition:.2s}.f:hover{background:#ffffff0a;transform:translateX(4px)}
+.f.new{animation:nw 1.6s both}@keyframes nw{0%{transform:scale(.8);opacity:0;background:#6c8cff55}60%{transform:scale(1.03)}100%{background:none}}
+.f .i{font-size:28px}.f .n{flex:1;min-width:0}.f b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}.f span{font-size:12px;color:var(--mut)}
+.f button{padding:7px 11px;font-size:13px}
+#chat{position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(380px,100%);background:var(--card);border-left:1px solid var(--line);z-index:25;display:flex;flex-direction:column;padding:16px;transform:translateX(105%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}#chat.s{transform:none}
+#msgs{flex:1;overflow:auto;display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.m{white-space:pre-wrap;background:#0e1428;border-radius:12px 12px 12px 3px;padding:8px 12px;font-size:14px;word-break:break-word;animation:ms .35s both;max-width:90%}.m.me{align-self:flex-end;background:#2a3a7a;border-radius:12px 12px 3px 12px}
+.m a{color:#9db4ff}.m small{display:block;opacity:.5;font-size:10px;text-align:right;margin-top:2px}.m.sys{align-self:center;background:none;color:var(--mut);font-size:12px}@keyframes ms{from{opacity:0;transform:translateY(12px) scale(.9)}}
+.row{display:flex;gap:8px;align-items:flex-end}.row textarea{flex:1;resize:none;max-height:120px;font-size:16px;line-height:1.35;border:1px solid var(--line);border-radius:12px;padding:10px 14px;outline:0;font-family:inherit}.row button{height:44px}#txt{display:block}
+#modal{z-index:30;flex-direction:column;align-items:stretch}#mh{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}#mh b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#mb{flex:1;background:#0e1428;border-radius:14px;overflow:auto;display:flex;align-items:center;justify-content:center}
+#mb iframe,#mb video{width:100%;height:100%;border:0;background:#fff}#mb video{background:#000}#mb img{max-width:100%;max-height:100%}#mb pre{align-self:flex-start;padding:16px;white-space:pre-wrap;font-size:13px;width:100%}
+.toast{position:fixed;left:50%;top:16px;background:var(--card);border:1px solid var(--a);padding:12px 16px;border-radius:12px;z-index:50;animation:to 4s both}
+@keyframes to{0%{transform:translate(-50%,-150%)}8%,88%{transform:translate(-50%,0)}100%{transform:translate(-50%,-150%);opacity:0}}
+.box.wide{width:min(760px,100%)}.tb{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}.tb span{margin-left:auto;color:var(--mut);font-size:13px}#mkp{background:#0e1428;border-radius:12px;padding:12px;margin:8px 0;font-size:13px;color:var(--mut)}#mkp code{display:block;color:var(--tx);word-break:break-all;margin:6px 0;user-select:all}#mkp .row{margin-top:8px}#mkp input{font-size:14px}#mups{margin-top:6px}#mups .up{background:#0e1428}.drag .win.s .box{box-shadow:0 0 0 3px var(--a),0 0 60px #6c8cff60}
+</style></head><body>
+<div class="blob b1"></div><div class="blob b2"></div>
+<header>
+ <h1><span class="globe">🌍</span>Всемирный диск</h1>
+ <div class="on"><span class="dot"></span><span id="on">1</span></div>
+ <button id="bs">🔍 Поиск файлов</button>
+ <button id="bm">🔒 Мои файлы</button>
+ <button id="bc" class="g">💬 Чат<span class="badge" id="bd">0</span></button>
+</header>
+<div id="zone"><div class="ic">☁️</div><h2>Перетащите файлы сюда</h2><p>или нажмите в любом месте, чтобы выбрать</p><input id="fi" type="file" multiple hidden><div id="ups"></div></div>
+
+<div class="win" id="ws"><div class="box"><h3>Поиск файлов <span><button class="g x" id="adm" title="Режим админа (удаление)">🛡</button> <button class="g x" data-close="ws">✕</button></span></h3><input id="q" placeholder="Начните вводить название..."><div id="list"></div></div></div>
+
+<div class="win" id="my"><div class="box wide"><h3><span id="mpath">🔒 Мои файлы</span><span><button class="g x" id="mkey" title="Ключ доступа">🔑</button> <button class="g x" data-close="my">✕</button></span></h3>
+<div id="mkp" hidden>Ваш личный ключ — как пароль. Файлы видны только с ним. Не показывайте его никому и сохраните, чтобы открыть файлы с другого устройства.<code id="kv"></code><button class="g" id="kc">Копировать</button>
+<div class="row"><input id="ki" placeholder="Вставить ключ с другого устройства" autocomplete="off"><button id="kg">Войти</button></div></div>
+<div class="tb"><button id="mnew">＋ Папка</button><button id="mup">⬆ Загрузить</button><span id="mtot"></span></div>
+<div id="mups"></div><div id="mlist" style="overflow:auto"></div><input id="mfi" type="file" multiple hidden></div></div>
+
+<div id="chat"><h3 style="display:flex;justify-content:space-between;align-items:center">💬 Общий чат <button class="g x" id="cx">✕</button></h3><div id="msgs"></div><div class="row"><textarea id="txt" rows="1" maxlength="500" placeholder="Написать всем..." enterkeyhint="send" autocomplete="off" spellcheck="true"></textarea><button id="send">➤</button></div></div>
+
+<div class="win" id="modal"><div id="mh"><b id="mt"></b><div><button id="mdl">Скачать</button> <button class="g" id="mx">✕</button></div></div><div id="mb"></div></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cid=Math.random().toString(36).slice(2,12);let files=[],unread=0;
+const ext=n=>(n.split('.').pop()||'').toLowerCase();
+const ICON={exe:'⚙️',msi:'⚙️',torrent:'🧲',zip:'🗜️',rar:'🗜️','7z':'🗜️',pdf:'📕',html:'🌐',htm:'🌐',mp3:'🎵',wav:'🎵',mp4:'🎬',webm:'🎬',png:'🖼️',jpg:'🖼️',jpeg:'🖼️',gif:'🖼️',webp:'🖼️',svg:'🖼️',txt:'📄',md:'📄',json:'📄',js:'📄',css:'📄'};
+const size=b=>b>1e9?(b/1e9).toFixed(2)+' ГБ':b>1e6?(b/1e6).toFixed(1)+' МБ':Math.ceil(b/1e3)+' КБ';
+const toast=t=>{const d=document.createElement('div');d.className='toast';d.textContent=t;document.body.append(d);setTimeout(()=>d.remove(),4000)};
+// окна
+$('#bs').onclick=()=>{$('#ws').classList.add('s');render();setTimeout(()=>$('#q').focus(),100)};
+$('#bm').onclick=()=>{$('#my').classList.add('s');loadMy()};
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>$('#'+b.dataset.close).classList.remove('s'));
+['ws','my'].forEach(id=>$('#'+id).onclick=e=>{if(e.target.id===id)$('#'+id).classList.remove('s')});
+$('#bc').onclick=()=>{$('#chat').classList.add('s');unread=0;$('#bd').style.display='none';setTimeout(()=>$('#txt').focus(),300)};
+$('#cx').onclick=()=>$('#chat').classList.remove('s');
+$('#mx').onclick=()=>{$('#modal').classList.remove('s');$('#mb').innerHTML=''};
+addEventListener('keydown',e=>{if(e.key!=='Escape')return;if($('#modal').classList.contains('s'))$('#mx').click();else{$('#ws').classList.remove('s');$('#my').classList.remove('s');$('#chat').classList.remove('s')}});
+// список файлов
+const enc=encodeURIComponent,dlu=u=>u+(u.includes('?')?'&':'?')+'dl=1',pub=f=>'/f/'+enc(f.id);
+function frow(f,uf,isNew,onDel){const d=document.createElement('div');d.className='f'+(isNew?' new':'');d.dataset.n=f.name.toLowerCase();
+ d.innerHTML=`<div class="i">${ICON[ext(f.name)]||'📦'}</div><div class="n"><b>${esc(f.name)}</b><span>${size(f.size)} · ${new Date(f.time).toLocaleString('ru')}</span></div><button>Открыть</button><button class="g">⬇</button>`;
+ const [o,dl]=d.querySelectorAll('button');o.onclick=()=>open_(f,uf(f));dl.onclick=()=>location.href=dlu(uf(f));if(onDel){const x=document.createElement('button');x.className='g';x.textContent='🗑';x.title='Удалить';x.onclick=()=>onDel(f);d.append(x)}return d}
+function render(){const l=$('#list'),q=$('#q').value.toLowerCase().trim(),r=files.filter(f=>f.name.toLowerCase().includes(q));l.innerHTML='';
+ if(!r.length)l.innerHTML=`<p style="color:var(--mut);text-align:center;padding:24px">${files.length?'Ничего не найдено':'Пока пусто — загрузите первый файл ✨'}</p>`;
+ r.forEach((f,i)=>{const e=frow(f,pub,false,adm()?delPub:null);e.style.animationDelay=Math.min(i,12)*35+'ms';l.append(e)})}
+$('#q').oninput=render;
+fetch('/api/files').then(r=>r.json()).then(r=>{files=Array.isArray(r)?r:[]}).catch(()=>toast('Не удалось загрузить список'));
+// просмотр
+async function open_(f,u){const e=ext(f.name),b=$('#mb');$('#mt').textContent=f.name;$('#mdl').onclick=()=>location.href=dlu(u);b.innerHTML='';
+ if(['png','jpg','jpeg','gif','webp','svg'].includes(e))b.innerHTML=`<img src="${u}">`;
+ else if(['mp4','webm'].includes(e))b.innerHTML=`<video src="${u}" controls autoplay></video>`;
+ else if(['mp3','wav','ogg'].includes(e))b.innerHTML=`<audio src="${u}" controls autoplay></audio>`;
+ else if(['html','htm','pdf'].includes(e))b.innerHTML=`<iframe src="${u}"></iframe>`;
+ else if(['txt','md','json','js','css'].includes(e)){const p=document.createElement('pre');p.textContent=await (await fetch(u)).text();b.append(p)}
+ else b.innerHTML=`<div style="text-align:center;padding:20px"><div style="font-size:60px">${ICON[e]||'📦'}</div><p style="margin:12px 0;color:var(--mut)">Браузер не запускает .${esc(e)} прямо на странице.<br>Файл скачается и откроется в программе на компьютере.</p><button id="mop">Открыть на компьютере</button></div>`;
+ if($('#mop'))$('#mop').onclick=()=>location.href=dlu(u);
+ $('#modal').classList.add('s')}
+// загрузка кусками по 20 МБ
+async function upload(file,priv){const d=document.createElement('div');d.className='up';d.innerHTML=`${esc(file.name)}<div class="bar"><i></i></div>`;(priv?$('#mups'):$('#ups')).prepend(d);
+ const bar=d.querySelector('i'),CH=20*1024*1024,n=Math.max(1,Math.ceil(file.size/CH)),ts=Date.now();
+ try{for(let i=0;i<n;i++){const blob=file.slice(i*CH,(i+1)*CH),q=`name=${enc(file.name)}&ts=${ts}&i=${i}&n=${n}&size=${file.size}`,url=priv?`/api/my/chunk?k=${myKey}&folder=${enc(cur)}&${q}`:`/api/chunk?${q}`;
+  for(let a=0;;a++){try{await new Promise((ok,bad)=>{const x=new XMLHttpRequest();x.open('POST',url);x.setRequestHeader('Content-Type','application/octet-stream');
+   x.upload.onprogress=e=>bar.style.width=(i*CH+e.loaded)/file.size*100+'%';
+   x.onload=()=>{if(x.status===200)return ok();let m=x.status;try{m=JSON.parse(x.responseText).error}catch{}bad(new Error(m))};x.onerror=()=>bad(new Error('сеть'));x.send(blob)});break}
+   catch(e){if(a>=2)throw e;await new Promise(r=>setTimeout(r,1500))}}}
+  bar.style.width='100%'}catch(e){toast('Ошибка: '+e.message)}
+ setTimeout(()=>d.remove(),900);if(priv)loadMy()}
+const pick=fs=>[...fs].forEach(f=>upload(f,false)),pickMy=fs=>[...fs].forEach(f=>upload(f,true));
+$('#zone').onclick=e=>{if(!e.target.closest('#ups'))$('#fi').click()};$('#fi').onchange=e=>{pick(e.target.files);e.target.value=''};
+let dc=0;addEventListener('dragenter',e=>{e.preventDefault();dc++;document.body.classList.add('drag')});
+addEventListener('dragleave',()=>{dc--;if(dc<=0){dc=0;document.body.classList.remove('drag')}});
+addEventListener('dragover',e=>e.preventDefault());
+addEventListener('drop',e=>{e.preventDefault();dc=0;document.body.classList.remove('drag');($('#my').classList.contains('s')?pickMy:pick)(e.dataTransfer.files)});
+// Удаление
+const adm=()=>localStorage.adm||'';
+async function delPub(f){if(!confirm('Удалить «'+f.name+'» для всех?'))return;const r=await fetch('/api/files/'+enc(f.id),{method:'DELETE',headers:{'x-admin':adm()}});
+ if(r.ok){files=files.filter(x=>x.id!==f.id);render();return toast('Файл удалён')}
+ if(r.status===403){localStorage.removeItem('adm');render();toast('Неверный пароль админа')}else if(r.status===501)toast('На сервере не задан ADMIN_KEY');else toast('Ошибка удаления')}
+$('#adm').onclick=()=>{if(adm()){localStorage.removeItem('adm');toast('Режим админа выключен')}else{const p=prompt('Пароль админа (ADMIN_KEY)');if(!p)return;localStorage.adm=p;toast('Режим админа включён')}render()};
+async function delMy(f){if(!confirm('Удалить «'+f.name+'»?'))return;const r=await fetch(`/api/my/item?k=${myKey}&p=${enc(f.id)}`,{method:'DELETE'});toast(r.ok?'Удалено':'Ошибка удаления');loadMy()}
+async function delFolder(fo){if(!confirm('Удалить папку «'+fo.name+'» и все файлы в ней?'))return;const r=await fetch(`/api/my/item?k=${myKey}&folder=${enc(fo.name)}`,{method:'DELETE'});toast(r.ok?'Папка удалена':'Ошибка удаления');loadMy()}
+// Мои файлы
+let myKey=localStorage.mykey,cur='',my={folders:[],files:[]};
+if(!/^[a-f0-9]{32}$/.test(myKey||'')){myKey=[...crypto.getRandomValues(new Uint8Array(16))].map(b=>b.toString(16).padStart(2,'0')).join('');localStorage.mykey=myKey}
+const myu=f=>`/api/my/f?k=${myKey}&p=${enc(f.id)}`;
+async function loadMy(){try{const r=await fetch('/api/my/list?k='+myKey);if(!r.ok)throw 0;my=await r.json();if(cur&&!my.folders.some(x=>x.name===cur))cur=''}catch{toast('Не удалось загрузить Мои файлы')}renderMy()}
+function renderMy(){const l=$('#mlist');l.innerHTML='';let i=0;const add2=e=>{e.style.animationDelay=Math.min(i++,12)*35+'ms';l.append(e)};
+ const tot=cur?(my.folders.find(x=>x.name===cur)||{size:0}).size:my.files.reduce((s,f)=>s+f.size,0);
+ $('#mpath').textContent='🔒 Мои файлы'+(cur?' / '+cur:'');$('#mtot').textContent='Размер: '+size(tot);$('#mnew').style.display=cur?'none':'';
+ if(cur){const b=document.createElement('div');b.className='f';b.style.cursor='pointer';b.innerHTML='<div class="i">⬅️</div><div class="n"><b>Назад</b></div>';b.onclick=()=>{cur='';renderMy()};add2(b)}
+ else my.folders.forEach(fo=>{const d=document.createElement('div');d.className='f';d.style.cursor='pointer';d.innerHTML=`<div class="i">📁</div><div class="n"><b>${esc(fo.name)}</b><span>Файлов: ${fo.count} · ${size(fo.size)}</span></div><button class="g" title="Удалить папку">🗑</button>`;d.onclick=()=>{cur=fo.name;renderMy()};d.querySelector('button').onclick=e=>{e.stopPropagation();delFolder(fo)};add2(d)});
+ const fs=my.files.filter(f=>f.folder===cur);fs.forEach(f=>add2(frow(f,myu,false,delMy)));
+ if(!fs.length&&(cur||!my.folders.length))l.insertAdjacentHTML('beforeend','<p style="color:var(--mut);text-align:center;padding:24px">Пусто — перетащите файлы в это окно ✨</p>')}
+$('#mup').onclick=()=>$('#mfi').click();$('#mfi').onchange=e=>{pickMy(e.target.files);e.target.value=''};
+$('#mnew').onclick=async()=>{const n=prompt('Название папки');if(!n||!n.trim())return;const r=await fetch(`/api/my/folder?k=${myKey}&name=${enc(n.trim())}`,{method:'POST'});if(!r.ok){let m='';try{m=(await r.json()).error}catch{}toast('Ошибка: '+m)}loadMy()};
+$('#mkey').onclick=()=>{$('#kv').textContent=myKey;$('#mkp').hidden=!$('#mkp').hidden};
+$('#kc').onclick=()=>navigator.clipboard.writeText(myKey).then(()=>toast('Ключ скопирован'),()=>toast('Выделите ключ и скопируйте вручную'));
+$('#kg').onclick=()=>{const k=$('#ki').value.trim().toLowerCase();if(!/^[a-f0-9]{32}$/.test(k))return toast('Неверный ключ');myKey=localStorage.mykey=k;cur='';$('#ki').value='';$('#kv').textContent=k;loadMy();toast('Ключ применён')};
+// чат (анонимный) и обновления в реальном времени
+let ws;const add=d=>{const b=$('#msgs');b.append(d);b.scrollTop=b.scrollHeight};
+function msg(m,live){const d=document.createElement('div');d.className='m'+(m.cid===cid?' me':'');
+ m.text.split(/(https?:\/\/\S+)/g).forEach((t,i)=>{if(i%2){const a=document.createElement('a');a.href=t;a.textContent=t;a.target='_blank';a.rel='noopener';d.append(a)}else d.append(document.createTextNode(t))});
+ const t=document.createElement('small');t.textContent=new Date(m.time||Date.now()).toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'});d.append(t);add(d);
+ if(live&&m.cid!==cid&&!$('#chat').classList.contains('s')){unread++;$('#bd').textContent=unread;$('#bd').style.display='block'}}
+function conn(){ws=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws');
+ ws.onmessage=e=>{const m=JSON.parse(e.data);
+  if(m.type==='init'){$('#msgs').innerHTML='';m.chat.forEach(x=>msg(x,false))}
+  else if(m.type==='chat')msg(m,true);
+  else if(m.type==='online')$('#on').textContent=m.n+' онлайн';
+  else if(m.type==='del'){files=files.filter(f=>f.id!==m.id);if($('#ws').classList.contains('s'))render()}
+  else if(m.type==='file'){if(files.some(f=>f.id===m.file.id))return;files.unshift(m.file);
+   if($('#ws').classList.contains('s'))render();
+   toast('📥 Новый файл: '+m.file.name);const s=document.createElement('div');s.className='m sys';s.textContent='Загружен файл «'+m.file.name+'»';add(s)}};
+ ws.onclose=()=>setTimeout(conn,1500)}
+conn();
+const T=$('#txt'),fit=()=>{T.style.height='auto';T.style.height=Math.min(T.scrollHeight,120)+'px'};
+const send=()=>{const t=T.value.trim();if(!t||ws.readyState!==1)return;ws.send(JSON.stringify({type:'chat',cid,text:t}));T.value='';fit();T.focus()};
+$('#send').onclick=send;T.oninput=fit;
+T.onkeydown=e=>{e.stopPropagation();if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();send()}else if(e.key==='Escape')$('#cx').click()};
+</script></body></html>
